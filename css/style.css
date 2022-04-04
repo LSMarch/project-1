@@ -1,0 +1,40 @@
+* {
+
+}
+
+:root {
+
+}
+
+header {
+    background-color: pink;
+    height: 80px;
+    width: 100vw;
+}
+
+main {
+    background-color: skyblue;
+    width: 100vw;
+    height: 100vh;
+}
+.nav-container {
+    background-color: pink;
+}
+.navbar-menu {
+ background-color: pink ;
+}
+
+.message-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.button {
+    margin: 10px;
+}
