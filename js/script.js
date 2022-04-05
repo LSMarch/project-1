@@ -118,30 +118,26 @@ var lmWatchKey = 'fZIKpNDup738VAfjCOX9c80qvmUAQ9w46LmH8qGn'
   // === SITE I USED TO FIND FUNCTIONAL ===
 // https://w3collective.com/fetch-display-api-data-javascript/
 
-var dadJoke = document.getElementById('movie-description')
+var dadJokeSetup = document.getElementById('dad-joke-setup')
+var dadJokePunchline = document.getElementById('dad-joke-punchline')
 
 function fetchJoke() {
   const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
+      'X-RapidAPI-Key':       'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      // Andrew's api key for dad jokes
+      // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
+      // Libby's api key for dad jokes
+      // 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
     }
   };
   console.log("joke generator triggered")
   fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
 	.then(response => response.json())
-	.then(response => console.log(response))
-  .then(data => {
-    console.log(data);    
-    displayJoke();
+	.then (function(response)  {
+    dadJokeSetup.textContent = response.body[0].setup
+    dadJokePunchline.textContent = response.body[0].punchline
   })
-  function displayJoke() {
-    var dadJoke = data.body[0].punchline
-  }
-
-
-  // .then(response => jokeDisplay.innerHTML = data.body[0].punchline) 
-	// .catch(err => console.error(err));
-
 }
