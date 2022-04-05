@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Cocktail and Movie Recommendation Generator</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Cocktail and Movie Recommendation Generator</title>
 </head>
+
 <body>
   <header>
     <div class="nav-container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-              <img src="https://bulma.io/images/bulma-logo.png" width="10%vw" height="10%vh">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="https://thumbs.dreamstime.com/b/cocktail-shaker-vector-object-design-element-monochrome-vintage-style-isolated-white-background-179331216.jpg" width="50px" height=auto>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              Filtered Search Engine (Coming Soon)
+            </a>
+
+            <a class="navbar-item">
+              About the Team
             </a>
           </div>
-        
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item">
-                Filtered Search Engine (Coming Soon)
-              </a>
-        
-              <a class="navbar-item">
-                About the Team
-              </a>
-              </div>
-            </div>
-        
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                </div>
-              </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
             </div>
           </div>
-        </nav>
+        </div>
+    </div>
+    </nav>
     </div>
   </header>
 
@@ -48,7 +50,7 @@
         <button class="delete" aria-label="delete"></button>
       </div>
       <div class="message-body">
-        Hold up now!  You must be 21 years or older to use this site.  Please confirm your age below. 
+        Hold up now! You must be 21 years or older to use this site. Please confirm your age below.
       </div>
       <div class="button-container">
         <button class="button">Yes</button>
@@ -56,73 +58,77 @@
       </div>
     </article>
 
+    <!-- About/Instruction Area -->
     <section class="about-project">
       <h1>Instructions</h1>
       <p>1. Click either of the buttons below to generate a random movie or cocktail.</p>
       <p>2. Click the cocktail/movie to learn more.</p>
     </section>
 
+    <!-- Buttons to Generate -->
     <div class="gen-container">
-    <section class="cocktail-generator" id="cocktail-gen">
-      <h1>Cocktail Generator</h1>
-      <button class="button is-white" id="cocktail-btn">Get me a Cocktail</button>
-    </section>
+      <section class="cocktail-generator" id="cocktail-gen">
+        <h1>Cocktail Generator</h1>
+        <button class="button is-white" id="cocktail-btn">Get me a Cocktail</button>
+      </section>
 
-    <section class="movie-generator" id="movie-gen">
-      <h1>Movie Generator</h1>
-      <button class="button is-white" id="cocktail-btn">Get me a Movie</button>
-    </section>
-  </div>
-
-  <div class="results-container">
-    <div class="cocktail-result">
-      <div class="cocktail-title">
-        <p id="cocktail-name" class="title is-4">Cocktail Name</p>
-      </div>
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img id="cocktail-img" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p id="main-ingredients" class="subtitle is-6">Main Ingredients</p>
-          </div>
-        </div>
-        <div id="cocktail-description" class="content">
-          Description here: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris.
-        </div>
-        <button class="button is-primary" id="make-cocktail">Make this Cocktail</button>
-      </div>
+      <section class="movie-generator" id="movie-gen">
+        <h1>Dad Joke Generator</h1>
+        <button class="button is-white" id="movie-btn">Tell Me a Joke</button>
+      </section>
     </div>
 
-    <div class="movie-result">
-      <div class="movie-title">
-        <p id="movie-title" class="title is-4">Movie Title</p>
+    <!-- Display Area -->
+    <section>
+    <div class="container column is-half has-text-centered is-flex is-flex-direction-column">
+
+      <div class="box cocktail-result is-centered is-flex is-flex-direction-column mx-4">
+        <div class="cocktail-title">
+          <p id="cocktail-name" class="title is-3">Cocktail Name</p>
+        </div>
+        <div class="card-image">
+          <figure class="image is-100x150">
+            <img id="cocktail-img" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p id="main-ingredients" class="subtitle is-6"></p>
+            </div>
+          </div>
+          <div id="cocktail-description" class="content">
+            
+          </div>
+          <button class="button is-primary" id="make-cocktail">Make this Cocktail</button>
+        </div>
       </div>
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img id="movie-img" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p id="streaming-services" class="subtitle is-6">Streaming Services</p>
+
+        <div class="is-half box movie-result is-centered is-flex is-flex-direction-column mx-4 ">
+          <div class="movie-title">
+            <p id="movie-title" class="title is-3">Joke Here</p>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p id="streaming-services" class="subtitle is-6"></p>
+              </div>
+            </div>
+            <div id="movie-description" class="content">
+              
+            </div>
+            <button class="button is-primary" id="make-cocktail">Generate Another?</button>
           </div>
         </div>
-        <div id="movie-description" class="content">
-          Descripton here: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris.
-        </div>
-        <button class="button is-primary" id="make-cocktail">More Details</button>
-      </div>
+    
     </div>
-
-  </div>
+  </section>
   </main>
-  <script src="./js/script.js"></script>  
+
+  <!-- <footer>
+    <h3>Made with ♥ by Group #3</h3>
+  </footer> -->
+  <script src="./js/script.js"></script>
 </body>
+
 </html>
