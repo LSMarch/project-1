@@ -14,6 +14,11 @@ var cocktailDisplayIngr = document.getElementById("main-ingredients")
 var cocktailDisplayDesc = document.getElementById("cocktail-description")
 var ingredientList = document.createElement("ul")
 
+//API Keys & Calls
+var dbApiKey = 9973533
+var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
+
+console.log(callDB.valueOf)
 
 // === Button Functions === 
 function fetchCocktail() {
@@ -95,9 +100,6 @@ function fetchJoke() {
   console.log("movie generator triggered")}
 
 // === API Keys & Calls ===
-
-var dbApiKey = 9973533
-var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
 
 var dadJokeSetup = document.getElementById('dad-joke-setup')
 var dadJokePunchline = document.getElementById('dad-joke-punchline')
