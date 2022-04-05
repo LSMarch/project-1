@@ -1,9 +1,10 @@
+
 // === Randomizer buttons and event listeners ===
 var cocktailBtn = document.getElementById("cocktail-gen");
 var movieBtn = document.getElementById("movie-gen");
 
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
-document.getElementById("movie-gen").addEventListener("click", fetchMovie);
+document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 
 // === Drink variables ===
 
@@ -13,6 +14,11 @@ var cocktailDisplayIngr = document.getElementById("main-ingredients")
 var cocktailDisplayDesc = document.getElementById("cocktail-description")
 var ingredientList = document.createElement("ul")
 
+//API Keys & Calls
+var dbApiKey = 9973533
+var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
+
+console.log(callDB.valueOf)
 
 // === Button Functions === 
 function fetchCocktail() {
@@ -90,20 +96,31 @@ function fetchCocktail() {
   })
 
 }
-
-function fetchMovie() {
-  console.log("movie generator triggered")
-}
+function fetchJoke() {
+  console.log("movie generator triggered")}
 
 // === API Keys & Calls ===
 
-var dbApiKey = 9973533
-var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
+var dadJokeSetup = document.getElementById('dad-joke-setup')
+var dadJokePunchline = document.getElementById('dad-joke-punchline')
 
-var amWatchKey = 'ANbHpQNookLPNxvDnQ6YOC2qE8wYYRrDNj5YbkE3'
-var slWatchKey =  'WTCefWtdN1yKksMEQG3nGCRMejYFmVCTgjYgTwlM'
-var lmWatchKey = 'fZIKpNDup738VAfjCOX9c80qvmUAQ9w46LmH8qGn'
-
-  // === SITE I USED TO FIND FUNCTIONAL ===
-// https://w3collective.com/fetch-display-api-data-javascript/
-
+function fetchJoke() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
+      'X-RapidAPI-Key':       'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      // Andrew's api key for dad jokes
+      // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
+      // Libby's api key for dad jokes
+      // 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+    }
+  };
+  console.log("joke generator triggered")
+  fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
+	.then(response => response.json())
+	.then (function(response)  {
+    dadJokeSetup.textContent = response.body[0].setup
+    dadJokePunchline.textContent = response.body[0].punchline
+  })
+}
