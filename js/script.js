@@ -33,7 +33,7 @@ function fetchJoke() {
   fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
 	.then(response => response.json())
 	.then(response => console.log(response))
-  .then(response => jokeDisplay.innerHTML = response.body) 
+  .then(response => jokeDisplay.innerHTML = data.body[0].punchline) 
 	.catch(err => console.error(err));
 }
 
@@ -100,7 +100,7 @@ fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
     }
   })
 
-}
+
 
 // function displayDrink() {
 //     // === Displaying Cocktail ===
