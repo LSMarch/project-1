@@ -1,3 +1,20 @@
+//Randomizer buttons and event listeners
+var cocktailBtn = document.getElementById("cocktail-gen");
+var movieBtn = document.getElementById("movie-gen");
+
+document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
+document.getElementById("movie-gen").addEventListener("click", fetchMovie);
+
+//Button Functions
+function fetchCocktail() {
+  console.log("cocktail generator triggered")
+}
+
+function fetchMovie() {
+  console.log("movie generator triggered")
+}
+
+//API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
 //

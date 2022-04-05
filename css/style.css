@@ -7,21 +7,22 @@
 }
 
 header {
-    background-color: pink;
+    background-color: #e7845d;
     height: 80px;
     width: 100vw;
 }
 
 main {
-    background-color: skyblue;
+    background-color:#E8DAB2;
     width: 100vw;
     height: 100vh;
 }
 .nav-container {
-    background-color: pink;
+    background-color: #e7845d;
 }
 .navbar-menu {
- background-color: pink ;
+    background-color: #e7845d;
+  
 }
 
 .message-body {
@@ -37,4 +38,61 @@ main {
 
 .button {
     margin: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.gen-container {
+    border: 2px solid black;
+    color: #4F6D7A;
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 80px;
+    border-radius: 10px;
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-generator, .cocktail-generator {
+    color: black;
+    font-weight: bolder;
+}
+
+.about-project {
+    margin: 20px 60px;
+    padding: 20px;
+}
+
+.about-project>h1 {
+    font-weight: bold;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 50px;
+    margin-top: 50px;
+}
+
+.cocktail-result {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 30vw;
+    height: 200px;
+    text-align: center;
+}
+
+.movie-result {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 30vw;
+    height: 200px;
+    text-align: center;
 }
