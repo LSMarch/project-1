@@ -42,12 +42,19 @@ function fetchCocktail() {
     var drinkDesc = data.drinks[0].strInstructions;
     cocktailDisplayDesc.textContent = drinkDesc
 
-    // === Ingredient List === 
-    //to be looped?
+    // === Store drink ===
+
+    localStorage.setItem("drink", cocktailName)
+    
+    // === Clearing ingredient list ===
+
     ingredientList.setAttribute("id", "ingredient-list")
     while(ingredientList.firstChild){
       ingredientList.removeChild(ingredientList.firstChild)
     }
+
+    // === Ingredient List === 
+    //to be looped?
 
     var cocktailIngr1 = data.drinks[0].strIngredient1;
     var cocktailIngr2 = data.drinks[0].strIngredient2;
@@ -87,6 +94,8 @@ function fetchCocktail() {
 
     cocktailDisplayIngr.appendChild(ingredientList)   
     }
+
+    
   })
 
 }
