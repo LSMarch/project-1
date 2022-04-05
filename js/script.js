@@ -13,28 +13,9 @@ var cocktailDisplayIngr = document.getElementById("main-ingredients")
 var cocktailDisplayDesc = document.getElementById("cocktail-description")
 var ingredientList = document.createElement("ul")
 
-
 // === Button Functions === 
 function fetchCocktail() {
   console.log("cocktail generator triggered")
-}
-
-var jokeDisplay = document.querySelector('#movie-description')
-
-function fetchJoke() {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
-    }
-  };
-  console.log("joke generator triggered")
-  fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-  .then(response => jokeDisplay.innerHTML = data.body[0].punchline) 
-	.catch(err => console.error(err));
 }
 
 //API Keys & Calls
@@ -159,3 +140,30 @@ var lmWatchKey = 'fZIKpNDup738VAfjCOX9c80qvmUAQ9w46LmH8qGn'
   // === SITE I USED TO FIND FUNCTIONAL ===
 // https://w3collective.com/fetch-display-api-data-javascript/
 
+var dadJoke = document.getElementById('movie-description')
+
+function fetchJoke() {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
+      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
+    }
+  };
+  console.log("joke generator triggered")
+  fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+  .then(data => {
+    console.log(data);    
+    displayJoke();
+  })
+  function displayJoke() {
+    var dadJoke = data.body[0].punchline
+  }
+
+
+  // .then(response => jokeDisplay.innerHTML = data.body[0].punchline) 
+	// .catch(err => console.error(err));
+
+}
