@@ -2,21 +2,33 @@
 // === Randomizer buttons and event listeners ===
 var cocktailBtn = document.getElementById("cocktail-gen");
 var movieBtn = document.getElementById("movie-gen");
+var saveDrinkBtn = document.getElementById("save-cocktail")
+var newDrinkBtn = document.getElementById("new-cocktail")
+
 
 
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
 document.getElementById("movie-gen").addEventListener("click", fetchJoke);
-
+newDrinkBtn.addEventListener("click", fetchCocktail)
+saveDrinkBtn.addEventListener("click", saveCocktail)
 // === Drink variables ===
-
+var cocktailImg
+var cocktailName
+var drinkDesc
+var cocktailIngr1
+var cocktailIngr2
+var cocktailIngr3
+var cocktailIngr4
+var cocktailIngr5
+var cocktailIngr6
+var cocktailIngr7
+var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 var cocktailDisplayImg = document.getElementById("cocktail-img");
 var cocktailDisplayName = document.getElementById("cocktail-name");
 var cocktailDisplayIngr = document.getElementById("main-ingredients");
 var cocktailDisplayDesc = document.getElementById("cocktail-description");
 var ingredientList = document.createElement("ul");
 var newCocktail = document.getElementById("new-cocktail");
-
-var favDrinkBtn = document.getElementById("make-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
@@ -33,15 +45,10 @@ function fetchCocktail() {
       } else {
         throw new Error("NETWORK RESPONSE ERROR");
       }
-    })
+    }) // end first .then
     .then(data => {
       console.log(data);
       displayDrink();    
-
-      var cocktailImg
-      var cocktailName
-      var drinkDesc
-      var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 
       // === Displaying Cocktail ===
 
@@ -64,13 +71,13 @@ function fetchCocktail() {
           ingredientList.removeChild(ingredientList.firstChild)
         }
 
-        var cocktailIngr1 = data.drinks[0].strIngredient1;
-        var cocktailIngr2 = data.drinks[0].strIngredient2;
-        var cocktailIngr3 = data.drinks[0].strIngredient3;
-        var cocktailIngr4 = data.drinks[0].strIngredient4;
-        var cocktailIngr5 = data.drinks[0].strIngredient5;
-        var cocktailIngr6 = data.drinks[0].strIngredient6;
-        var cocktailIngr7 = data.drinks[0].strIngredient7;
+        cocktailIngr1 = data.drinks[0].strIngredient1;
+        cocktailIngr2 = data.drinks[0].strIngredient2;
+        cocktailIngr3 = data.drinks[0].strIngredient3;
+        cocktailIngr4 = data.drinks[0].strIngredient4;
+        cocktailIngr5 = data.drinks[0].strIngredient5;
+        cocktailIngr6 = data.drinks[0].strIngredient6;
+        cocktailIngr7 = data.drinks[0].strIngredient7;
 
         var addIngredient1 = document.createElement("li")
         addIngredient1.textContent = cocktailIngr1
@@ -100,27 +107,30 @@ function fetchCocktail() {
         addIngredient7.textContent = cocktailIngr7
         ingredientList.appendChild(addIngredient7)
 
-        cocktailDisplayIngr.appendChild(ingredientList)  
-        
-        // === Saved drinks to local storage === 
-
-        favDrinkBtn.addEventListener("click", saveDrink())
-        function saveDrink() {
-        favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
-        favedDrinks.push(cocktailName)
-        localStorage.setItem("favorite", JSON.stringify(favedDrinks))
-        //console.log(favedDrinks)
-        }
-
-
-        }
-
-
-        
-      
+        cocktailDisplayIngr.appendChild(ingredientList)      
+      } // end displayDrink 
      
-    })  
-}
+    })// end second .then
+} //end fetchCocktail
+
+function saveCocktail() {
+
+  // === Saved drinks to local storage ===  
+  
+  favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+  favedDrinks.push(cocktailName)
+  localStorage.setItem("favorite", JSON.stringify(favedDrinks))
+  console.log(favedDrinks)
+
+  for (var i=0; i < favedDrinks.length; i++){
+
+    var li = document.createElement("li")
+    
+
+  }
+ 
+
+} // end saveCocktail
 
 var dadJokeSetup = document.getElementById('dad-joke-setup');
 var dadJokePunchline = document.getElementById('dad-joke-punchline');
