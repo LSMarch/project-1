@@ -22,7 +22,6 @@ var cocktailIngr5
 var cocktailIngr6
 var cocktailIngr7
 var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
-
 var cocktailDisplayImg = document.getElementById("cocktail-img");
 var cocktailDisplayName = document.getElementById("cocktail-name");
 var cocktailDisplayIngr = document.getElementById("main-ingredients");
