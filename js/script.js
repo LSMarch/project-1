@@ -132,39 +132,68 @@ function saveCocktail() {
 
 } // end saveCocktail
 
-function fetchJoke() {
-  console.log("movie generator triggered")
-}
-
-// === API Keys & Calls ===
-
-var dadJokeSetup = document.getElementById('dad-joke-setup')
-var dadJokePunchline = document.getElementById('dad-joke-punchline')
-var moreJokes = document.getElementById('more-jokes')
+var dadJokeSetup = document.getElementById('dad-joke-setup');
+var dadJokePunchline = document.getElementById('dad-joke-punchline');
+var moreJokes = document.getElementById('more-jokes');
+var saveJokeBtn = document.getElementById('save-jokes')
 
 moreJokes.addEventListener('click', fetchJoke)
+saveJokeBtn.addEventListener('click', saveJokes)
 
 function fetchJoke() {
   const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
       // 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      // Sam's api key for dad jokes
+      // '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
     }
   };
-  console.log("joke generator triggered")
+
   fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
     .then(response => response.json())
     .then(function (response) {
-      dadJokeSetup.textContent = response.body[0].setup
-      dadJokePunchline.textContent = response.body[0].punchline
+      dadJokeSetup.textContent = response.body[0].setup;
+      dadJokePunchline.textContent = response.body[0].punchline;
+
+
+
     })
 }
 
+var savedJokeSetup
+var savedJokePunchline
+
+function saveJokes() {
+
+  // === Saved jokes to local storage ===  
+  savedJokeSetup = JSON.parse(localStorage.getItem("setupJoke")) || []
+  savedJokeSetup.push(dadJokeSetup.innerText)
+  localStorage.setItem("setupJoke", JSON.stringify(savedJokeSetup))
+  console.log(savedJokeSetup)
+
+  for (var i=0; i < savedJokeSetup.length; i++){
+
+    var li = document.createElement("li")
+    
+
+  }
+  
+  savedJokePunchline = JSON.parse(localStorage.getItem("jokePunchline")) || []
+  savedJokePunchline.push(dadJokePunchline.innerText)
+  localStorage.setItem("jokePunchline", JSON.stringify(savedJokePunchline))
+  console.log(savedJokePunchline)
+
+  for (var i=0; i < savedJokePunchline.length; i++){
+
+    var li = document.createElement("li")
+  }
+}
 
 //Nav Bar navigation js
 document.addEventListener('DOMContentLoaded', () => {
@@ -190,5 +219,4 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
 });
