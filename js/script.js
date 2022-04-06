@@ -150,13 +150,16 @@ function fetchJoke() {
       dadJokePunchline.textContent = response.body[0].punchline;
 
       var savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
+      var previousJoke = document.getElementById('previous-jokes')
 
       moreJokes.addEventListener("click", saveJoke())
       function saveJoke() {
         savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
         savedJokes.push(dadJokeSetup)
         localStorage.setItem("lastJoke", JSON.stringify(savedJokes))
+        localStorage.getItem('lastJoke', JSON.parse())
         console.log(savedJokes)
+        previousJoke.textContent = savedJokes
       }
     })
 }
