@@ -13,7 +13,7 @@ var cocktailDisplayName = document.getElementById("cocktail-name");
 var cocktailDisplayIngr = document.getElementById("main-ingredients")
 var cocktailDisplayDesc = document.getElementById("cocktail-description")
 var ingredientList = document.createElement("ul")
-// var favoriteDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+
 var favDrinkBtn = document.getElementById("make-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
@@ -34,24 +34,25 @@ function fetchCocktail() {
     })
     .then(data => {
       console.log(data);
-      displayDrink();
+      displayDrink();    
 
-      // localStorage.setItem("favorite", cocktailName)
+      var cocktailImg
+      var cocktailName
+      var drinkDesc
+      var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 
       // === Displaying Cocktail ===
 
-      function displayDrink() {
-        // favoriteDrinks.push(cocktailName)
-        // localStorage.setItem("favorite", cocktailName)
+      function displayDrink() {        
 
-        var cocktailImg = data.drinks[0].strDrinkThumb;
+        cocktailImg = data.drinks[0].strDrinkThumb;
         cocktailDisplayImg.setAttribute("src", cocktailImg);
 
-        var cocktailName = data.drinks[0].strDrink;
+        cocktailName = data.drinks[0].strDrink;
 
         cocktailDisplayName.textContent = cocktailName
 
-        var drinkDesc = data.drinks[0].strInstructions;
+        drinkDesc = data.drinks[0].strInstructions;
         cocktailDisplayDesc.textContent = drinkDesc
 
         // === Ingredient List === 
@@ -97,15 +98,28 @@ function fetchCocktail() {
         addIngredient7.textContent = cocktailIngr7
         ingredientList.appendChild(addIngredient7)
 
-        cocktailDisplayIngr.appendChild(ingredientList)
+        cocktailDisplayIngr.appendChild(ingredientList)  
         
-        var favoriteDrinks = JSON.parse(localStorage.getItem("favorite")) || []
-        favoriteDrinks.push(cocktailName)
-        localStorage.setItem("favorite", JSON.stringify(favoriteDrinks))
-      }
-    })
+        // === Saved drinks to local storage === 
 
+        favDrinkBtn.addEventListener("click", saveDrink())
+        function saveDrink() {
+        favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+        favedDrinks.push(cocktailName)
+        localStorage.setItem("favorite", JSON.stringify(favedDrinks))
+        //console.log(favedDrinks)
+        }
+
+
+        }
+
+
+        
+      }
+     
+    })  
 }
+
 function fetchJoke() {
   console.log("movie generator triggered")
 }
