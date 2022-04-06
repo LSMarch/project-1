@@ -13,7 +13,8 @@ var cocktailDisplayName = document.getElementById("cocktail-name");
 var cocktailDisplayIngr = document.getElementById("main-ingredients")
 var cocktailDisplayDesc = document.getElementById("cocktail-description")
 var ingredientList = document.createElement("ul")
-
+// var favoriteDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+var favDrinkBtn = document.getElementById("make-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
@@ -35,9 +36,14 @@ function fetchCocktail() {
       console.log(data);
       displayDrink();
 
+      // localStorage.setItem("favorite", cocktailName)
+
       // === Displaying Cocktail ===
 
       function displayDrink() {
+        // favoriteDrinks.push(cocktailName)
+        // localStorage.setItem("favorite", cocktailName)
+
         var cocktailImg = data.drinks[0].strDrinkThumb;
         cocktailDisplayImg.setAttribute("src", cocktailImg);
 
@@ -92,6 +98,10 @@ function fetchCocktail() {
         ingredientList.appendChild(addIngredient7)
 
         cocktailDisplayIngr.appendChild(ingredientList)
+        
+        var favoriteDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+        favoriteDrinks.push(cocktailName)
+        localStorage.setItem("favorite", JSON.stringify(favoriteDrinks))
       }
     })
 
