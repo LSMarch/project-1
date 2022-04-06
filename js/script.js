@@ -3,6 +3,7 @@
 var cocktailBtn = document.getElementById("cocktail-gen");
 var movieBtn = document.getElementById("movie-gen");
 
+
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
 document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 
@@ -10,9 +11,10 @@ document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 
 var cocktailDisplayImg = document.getElementById("cocktail-img");
 var cocktailDisplayName = document.getElementById("cocktail-name");
-var cocktailDisplayIngr = document.getElementById("main-ingredients")
-var cocktailDisplayDesc = document.getElementById("cocktail-description")
-var ingredientList = document.createElement("ul")
+var cocktailDisplayIngr = document.getElementById("main-ingredients");
+var cocktailDisplayDesc = document.getElementById("cocktail-description");
+var ingredientList = document.createElement("ul");
+var newCocktail = document.getElementById("new-cocktail");
 
 //API Keys & Calls
 var dbApiKey = 9973533
