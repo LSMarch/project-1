@@ -28,6 +28,7 @@ function fetchCocktail() {
   .then(data => {
     console.log(data);    
     displayDrink();
+    localStorage.setItem("favorite", JSON.stringify(favoriteDrink));
 
     // === Displaying Cocktail ===
 
@@ -43,8 +44,13 @@ function fetchCocktail() {
     cocktailDisplayDesc.textContent = drinkDesc
 
     // === Store drink ===
-
-    localStorage.setItem("drink", cocktailName)
+    var favoriteDrink = JSON.parse(localStorage.getItem("cocktailName")) || [];
+      //cocktailName
+      var saveFavorite = $("#make-cocktail").on('click', function(){
+      favoriteDrink = JSON.parse(localStorage.getItem("cocktailName")) || [];
+      favoriteDrink.push(cocktailName)
+      localStorage.setItem("favorite", JSON.stringify(favoriteDrink));
+      })
     
     // === Clearing ingredient list ===
 
