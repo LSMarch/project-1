@@ -96,15 +96,10 @@ function fetchCocktail() {
     })
 
 }
-function fetchJoke() {
-  console.log("movie generator triggered")
-}
 
-// === API Keys & Calls ===
-
-var dadJokeSetup = document.getElementById('dad-joke-setup')
-var dadJokePunchline = document.getElementById('dad-joke-punchline')
-var moreJokes = document.getElementById('more-jokes')
+var dadJokeSetup = document.getElementById('dad-joke-setup');
+var dadJokePunchline = document.getElementById('dad-joke-punchline');
+var moreJokes = document.getElementById('more-jokes');
 
 moreJokes.addEventListener('click', fetchJoke)
 
@@ -113,18 +108,40 @@ function fetchJoke() {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      'X-RapidAPI-Key': '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
       // 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      // Sam's api key for dad jokes
+      // '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
     }
   };
   console.log("joke generator triggered")
   fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
     .then(response => response.json())
     .then(function (response) {
-      dadJokeSetup.textContent = response.body[0].setup
-      dadJokePunchline.textContent = response.body[0].punchline
+      dadJokeSetup.textContent = response.body[0].setup;
+      dadJokePunchline.textContent = response.body[0].punchline;
+
+      var savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
+
+      moreJokes.addEventListener("click", saveJoke())
+      function saveJoke() {
+        savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
+        savedJokes.push(dadJokeSetup)
+        localStorage.setItem("lastJoke", JSON.stringify(savedJokes))
+        console.log(savedJokes)
+      }
     })
 }
+// var savedJokes = {
+//   joke1: ''
+// }
+
+// var savedJokesSerialized = JSON.stringify(savedJokes)
+// console.log(savedJokes)
+
+// localStorage.setItem('savedJokes', savedJokes)
+// console.log(localstorage);
+
