@@ -3,6 +3,7 @@
 var cocktailBtn = document.getElementById("cocktail-gen");
 var movieBtn = document.getElementById("movie-gen");
 
+
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
 document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 
@@ -10,10 +11,12 @@ document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 
 var cocktailDisplayImg = document.getElementById("cocktail-img");
 var cocktailDisplayName = document.getElementById("cocktail-name");
-var cocktailDisplayIngr = document.getElementById("main-ingredients")
-var cocktailDisplayDesc = document.getElementById("cocktail-description")
-var ingredientList = document.createElement("ul")
+var cocktailDisplayIngr = document.getElementById("main-ingredients");
+var cocktailDisplayDesc = document.getElementById("cocktail-description");
+var ingredientList = document.createElement("ul");
+var newCocktail = document.getElementById("new-cocktail");
 
+var favDrinkBtn = document.getElementById("make-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
@@ -33,19 +36,25 @@ function fetchCocktail() {
     })
     .then(data => {
       console.log(data);
-      displayDrink();
+      displayDrink();    
+
+      var cocktailImg
+      var cocktailName
+      var drinkDesc
+      var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 
       // === Displaying Cocktail ===
 
-      function displayDrink() {
-        var cocktailImg = data.drinks[0].strDrinkThumb;
+      function displayDrink() {        
+
+        cocktailImg = data.drinks[0].strDrinkThumb;
         cocktailDisplayImg.setAttribute("src", cocktailImg);
 
-        var cocktailName = data.drinks[0].strDrink;
+        cocktailName = data.drinks[0].strDrink;
 
         cocktailDisplayName.textContent = cocktailName
 
-        var drinkDesc = data.drinks[0].strInstructions;
+        drinkDesc = data.drinks[0].strInstructions;
         cocktailDisplayDesc.textContent = drinkDesc
 
         // === Ingredient List === 
@@ -91,11 +100,28 @@ function fetchCocktail() {
         addIngredient7.textContent = cocktailIngr7
         ingredientList.appendChild(addIngredient7)
 
-        cocktailDisplayIngr.appendChild(ingredientList)
-      }
-    })
+        cocktailDisplayIngr.appendChild(ingredientList)  
+        
+        // === Saved drinks to local storage === 
 
+        favDrinkBtn.addEventListener("click", saveDrink())
+        function saveDrink() {
+        favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+        favedDrinks.push(cocktailName)
+        localStorage.setItem("favorite", JSON.stringify(favedDrinks))
+        //console.log(favedDrinks)
+        }
+
+
+        }
+
+
+        
+      
+     
+    })  
 }
+
 function fetchJoke() {
   console.log("movie generator triggered")
 }
@@ -113,7 +139,7 @@ function fetchJoke() {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      'X-RapidAPI-Key': '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
