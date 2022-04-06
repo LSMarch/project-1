@@ -23,7 +23,7 @@ body {
 main {
     background-color:#E8DAB2;
     width: 100vw;
-    height: 100vh;
+    min-height: 100%;
 }
 .nav-container {
     background-color: #e7845d;
