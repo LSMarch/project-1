@@ -12,35 +12,54 @@
 
 <body>
   <header>
-    <div class="nav-container is-full">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img href="" width="200" height="200">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
           <a class="navbar-item">
-            <img src="https://thumbs.dreamstime.com/b/cocktail-shaker-vector-object-design-element-monochrome-vintage-style-isolated-white-background-179331216.jpg" width="50px" height=auto>
+            Home
           </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-          <div class="navbar-start">
-            <a class="navbar-item">
-              Filtered Search Engine (Coming Soon)
+    
+          <a class="navbar-item">
+            About the Team
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Favorites
             </a>
-
-            <a class="navbar-item">
-              About the Team
-            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Saved Cocktail Recipes
+              </a>
+              <a class="navbar-item">
+                Saved Jokes
+              </a>
+              <hr class="navbar-divider">
+            </div>
           </div>
         </div>
-
+    
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
             </div>
           </div>
         </div>
-    </div>
+      </div>
     </nav>
-    </div>
   </header>
 
   <main>
@@ -142,7 +161,7 @@
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>The Mixer</strong> by <a href="#">Team #3</a>.
+        <strong>The Mixer</strong> by <a href="./html/about-the-team.html">Team #3</a>.
       </p>
     </div>
   </footer>
