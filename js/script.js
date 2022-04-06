@@ -16,6 +16,7 @@ var cocktailDisplayDesc = document.getElementById("cocktail-description");
 var ingredientList = document.createElement("ul");
 var newCocktail = document.getElementById("new-cocktail");
 
+var favDrinkBtn = document.getElementById("make-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
@@ -35,19 +36,25 @@ function fetchCocktail() {
     })
     .then(data => {
       console.log(data);
-      displayDrink();
+      displayDrink();    
+
+      var cocktailImg
+      var cocktailName
+      var drinkDesc
+      var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 
       // === Displaying Cocktail ===
 
-      function displayDrink() {
-        var cocktailImg = data.drinks[0].strDrinkThumb;
+      function displayDrink() {        
+
+        cocktailImg = data.drinks[0].strDrinkThumb;
         cocktailDisplayImg.setAttribute("src", cocktailImg);
 
-        var cocktailName = data.drinks[0].strDrink;
+        cocktailName = data.drinks[0].strDrink;
 
         cocktailDisplayName.textContent = cocktailName
 
-        var drinkDesc = data.drinks[0].strInstructions;
+        drinkDesc = data.drinks[0].strInstructions;
         cocktailDisplayDesc.textContent = drinkDesc
 
         // === Ingredient List === 
@@ -93,11 +100,28 @@ function fetchCocktail() {
         addIngredient7.textContent = cocktailIngr7
         ingredientList.appendChild(addIngredient7)
 
-        cocktailDisplayIngr.appendChild(ingredientList)
-      }
-    })
+        cocktailDisplayIngr.appendChild(ingredientList)  
+        
+        // === Saved drinks to local storage === 
 
+        favDrinkBtn.addEventListener("click", saveDrink())
+        function saveDrink() {
+        favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+        favedDrinks.push(cocktailName)
+        localStorage.setItem("favorite", JSON.stringify(favedDrinks))
+        //console.log(favedDrinks)
+        }
+
+
+        }
+
+
+        
+      
+     
+    })  
 }
+
 function fetchJoke() {
   console.log("movie generator triggered")
 }
