@@ -157,7 +157,7 @@ function fetchJoke() {
         savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
         savedJokes.push(dadJokeSetup)
         localStorage.setItem("lastJoke", JSON.stringify(savedJokes))
-        localStorage.getItem('lastJoke', JSON.parse())
+        localStorage.getItem('lastJoke', JSON.parse(savedJokes))
         console.log(savedJokes)
         previousJoke.textContent = savedJokes
       }
