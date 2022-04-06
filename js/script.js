@@ -135,15 +135,17 @@ function saveCocktail() {
 var dadJokeSetup = document.getElementById('dad-joke-setup');
 var dadJokePunchline = document.getElementById('dad-joke-punchline');
 var moreJokes = document.getElementById('more-jokes');
+var saveJokeBtn = document.getElementById('save-jokes')
 
 moreJokes.addEventListener('click', fetchJoke)
+saveJokeBtn.addEventListener('click', saveJokes)
 
 function fetchJoke() {
   const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
+      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
@@ -152,34 +154,43 @@ function fetchJoke() {
       // '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
     }
   };
-  console.log("joke generator triggered")
+
   fetch('https://dad-jokes.p.rapidapi.com/random/joke', options)
     .then(response => response.json())
     .then(function (response) {
       dadJokeSetup.textContent = response.body[0].setup;
       dadJokePunchline.textContent = response.body[0].punchline;
 
-      var savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
-      var previousJoke = document.getElementById('previous-jokes')
 
-      moreJokes.addEventListener("click", saveJoke())
-      function saveJoke() {
-        savedJokes = JSON.parse(localStorage.getItem("lastJoke")) || []
-        savedJokes.push(dadJokeSetup)
-        localStorage.setItem("lastJoke", JSON.stringify(savedJokes))
-        localStorage.getItem('lastJoke', JSON.parse(savedJokes))
-        console.log(savedJokes)
-        previousJoke.textContent = savedJokes
-      }
+
     })
 }
-// var savedJokes = {
-//   joke1: ''
-// }
 
-// var savedJokesSerialized = JSON.stringify(savedJokes)
-// console.log(savedJokes)
+var savedJokeSetup
+var savedJokePunchline
 
-// localStorage.setItem('savedJokes', savedJokes)
-// console.log(localstorage);
+function saveJokes() {
 
+  // === Saved jokes to local storage ===  
+  savedJokeSetup = JSON.parse(localStorage.getItem("setupJoke")) || []
+  savedJokeSetup.push(dadJokeSetup.innerText)
+  localStorage.setItem("setupJoke", JSON.stringify(savedJokeSetup))
+  console.log(savedJokeSetup)
+
+  for (var i=0; i < savedJokeSetup.length; i++){
+
+    var li = document.createElement("li")
+    
+
+  }
+  
+  savedJokePunchline = JSON.parse(localStorage.getItem("jokePunchline")) || []
+  savedJokePunchline.push(dadJokePunchline.innerText)
+  localStorage.setItem("jokePunchline", JSON.stringify(savedJokePunchline))
+  console.log(savedJokePunchline)
+
+  for (var i=0; i < savedJokePunchline.length; i++){
+
+    var li = document.createElement("li")
+  }
+}
