@@ -6,6 +6,7 @@ var saveDrinkBtn = document.getElementById("save-cocktail")
 var newDrinkBtn = document.getElementById("new-cocktail")
 
 
+
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
 document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 newDrinkBtn.addEventListener("click", fetchCocktail)
@@ -28,8 +29,6 @@ var cocktailDisplayIngr = document.getElementById("main-ingredients");
 var cocktailDisplayDesc = document.getElementById("cocktail-description");
 var ingredientList = document.createElement("ul");
 var newCocktail = document.getElementById("new-cocktail");
-var favDrinkBtn = document.getElementById("save-cocktail")
-var newDrinkBtn = document.getElementById("new-cocktail")
 //API Keys & Calls
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
