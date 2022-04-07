@@ -148,6 +148,8 @@ var dadJokeSetup = document.getElementById('dad-joke-setup');
 var dadJokePunchline = document.getElementById('dad-joke-punchline');
 var moreJokes = document.getElementById('more-jokes');
 var saveJokeBtn = document.getElementById('save-jokes')
+var favJokeSetup = document.getElementById('display-saved-joke-setup')
+var favJokePunchline = document.getElementById('display-saved-joke-punchline')
 
 moreJokes.addEventListener('click', fetchJoke)
 saveJokeBtn.addEventListener('click', saveJokes)
@@ -157,7 +159,7 @@ function fetchJoke() {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
+      'X-RapidAPI-Key': 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
@@ -172,39 +174,60 @@ function fetchJoke() {
     .then(function (response) {
       dadJokeSetup.textContent = response.body[0].setup;
       dadJokePunchline.textContent = response.body[0].punchline;
-
-
-
     })
 }
 
 var savedJokeSetup
 var savedJokePunchline
-
 function saveJokes() {
-
+  localStorage.clear
+}
+function saveJokes() {
   // === Saved jokes to local storage ===  
   savedJokeSetup = JSON.parse(localStorage.getItem("setupJoke")) || []
   savedJokeSetup.push(dadJokeSetup.innerText)
   localStorage.setItem("setupJoke", JSON.stringify(savedJokeSetup))
-  console.log(savedJokeSetup)
+ 
+  // document.getElementById("display-joke-setup").innerHTML = ""
 
-  for (var i=0; i < savedJokeSetup.length; i++){
+for (let i = 0; i < savedJokeSetup.length; i++) {
 
-    var li = document.createElement("li")
-    
+  var cardTag = document.createElement("div")
+ cardTag.setAttribute("class","card");
+ var cardContentTag = document.createElement("div")
+ cardContentTag.setAttribute("class","card-content");
+ var contentTag = document.createElement("div")
+ contentTag.setAttribute("class","content");
 
-  }
+ contentTag.textContent = savedJokeSetup[i];
+
+ cardContentTag.appendChild(contentTag);
+ cardTag.appendChild(cardContentTag)
+ favJokeSetup.appendChild(cardTag)
+ }
   
   savedJokePunchline = JSON.parse(localStorage.getItem("jokePunchline")) || []
   savedJokePunchline.push(dadJokePunchline.innerText)
   localStorage.setItem("jokePunchline", JSON.stringify(savedJokePunchline))
-  console.log(savedJokePunchline)
 
-  for (var i=0; i < savedJokePunchline.length; i++){
+  // document.getElementById("display-joke-punchline").innerHTML = ""
 
-    var li = document.createElement("li")
+  for (let i = 0; i < savedJokePunchline.length; i++) {
+
+    var cardTag = document.createElement("div")
+   cardTag.setAttribute("class","card");
+   var cardContentTag = document.createElement("div")
+   cardContentTag.setAttribute("class","card-content");
+   var contentTag = document.createElement("div")
+   contentTag.setAttribute("class","content");
+  
+   contentTag.textContent = savedJokePunchline[i];
+  
+   cardContentTag.appendChild(contentTag);
+   cardTag.appendChild(cardContentTag)
+   favJokePunchline.appendChild(cardTag)
   }
+  // favJokePunchline.textContent = savedJokePunchline
 }
 
 //Nav Bar navigation js

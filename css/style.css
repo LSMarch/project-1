@@ -85,3 +85,6 @@ main {
    
 }
 
+.fav-jokes-setup-container {
+    display: flex;
+}
