@@ -2,8 +2,8 @@ var resultTitleEl = document.querySelector('#result-title')
 var resultContentEl = document.querySelector('#result-content')
 
 //Get results from generation page.  How to listen to event listener from "save recipe button?"
-document.getElementById("cocktail-result").innerHTML=localStorage.getItem("favorite");
-console.log("hello")
+// document.getElementById("cocktail-result").innerHTML=localStorage.getItem("favorite");
+// console.log("hello")
 
 //Create and append new result card to unordered list. Focus on title-only first.  
 
