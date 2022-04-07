@@ -7,9 +7,15 @@ var newDrinkBtn = document.getElementById("new-cocktail")
 
 
 document.getElementById("cocktail-gen").addEventListener("click", fetchCocktail);
-document.getElementById("movie-gen").addEventListener("click", fetchJoke);
+//document.getElementById("movie-gen").addEventListener("click", fetchJoke);
 newDrinkBtn.addEventListener("click", fetchCocktail)
-saveDrinkBtn.addEventListener("click", saveCocktail)
+
+// saveDrinkBtn.addEventListener("click", function () {
+//   favedDrinks.push(cocktailName)
+//   saveCocktail()
+//   renderFavList()
+
+// })
 // === Drink variables ===
 var cocktailImg
 var cocktailName
@@ -22,8 +28,8 @@ var cocktailIngr5
 var cocktailIngr6
 var cocktailIngr7
 
-var favList = document.getElementById("fav-cocktails")
-var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
+// var favList = document.getElementById("fav-cocktails")
+// var favedDrinks = JSON.parse(localStorage.getItem("favorite")) || []
 var cocktailDisplayImg = document.getElementById("cocktail-img");
 var cocktailDisplayName = document.getElementById("cocktail-name");
 var cocktailDisplayIngr = document.getElementById("main-ingredients");
@@ -36,7 +42,7 @@ var newDrinkBtn = document.getElementById("new-cocktail")
 var dbApiKey = 9973533
 var callDB = "www.thecocktaildb.com/api/json/v1/" + dbApiKey + "/randomselection.php"
 
-console.log(callDB.valueOf)
+
 
 // === Button Functions === 
 function fetchCocktail() {
@@ -117,27 +123,45 @@ function fetchCocktail() {
     })// end second .then
 } //end fetchCocktail
 
+
+var favedDrinks =  []
+
+saveDrinkBtn.addEventListener("click", function () {
+  favedDrinks.push(cocktailName)
+  saveCocktail()
+  renderFavList()
+
+})
+
 function saveCocktail() {
   // === Saved drinks to local storage ===  
-  favedDrinks.push(cocktailName)
+  
   localStorage.setItem("favorite", JSON.stringify(favedDrinks))
-  //renderFavList()
+  
 } // end saveCocktail
 
-// function renderFavList () {
+function renderFavList () {
+  for(var i = 0; i < favedDrinks.length; i++){
+  var fav = favedDrinks[i]
+  var favLi = document.createElement("li")
+  favLi.textContent=fav
+  favLi.setAttribute("data-index", i)
+  document.getElementById("fav-cocktails").appendChild(favLi);
+  //console.log(favList)
+  }
+  
+} // end renderfav
 
-// favList
-// for (var i = 0; i < favedDrinks.length; i++){
-//   var fav = favedDrinks[i]
-//   var li = document.createElement("li")
-//   li.textContent=fav
-//   console.log(fav)
-//   li.setAttribute("data-index", i);
+function init() {
+  var getFavedDrinks = JSON.parse(localStorage.getItem("favorite"))
+  if(getFavedDrinks !== null){
+    favedDrinks=getFavedDrinks
+  }   
+  renderFavList()
+  saveCocktail()
+}
+// end init()
 
-//   favList.appendChild(li);
-// }
-
-//}
 
 var dadJokeSetup = document.getElementById('dad-joke-setup');
 var dadJokePunchline = document.getElementById('dad-joke-punchline');
@@ -227,3 +251,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+init()
