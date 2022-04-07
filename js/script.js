@@ -155,11 +155,12 @@ moreJokes.addEventListener('click', fetchJoke)
 saveJokeBtn.addEventListener('click', saveJokes)
 
 function fetchJoke() {
+  saveJokeBtn.style.visibility = 'visible'
   const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com',
-      'X-RapidAPI-Key': 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
+      'X-RapidAPI-Key': '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
       // Andrew's api key for dad jokes
       // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
       // Libby's api key for dad jokes
@@ -179,19 +180,17 @@ function fetchJoke() {
 
 var savedJokeSetup
 var savedJokePunchline
+
 function saveJokes() {
-  localStorage.clear
-}
-function saveJokes() {
+  saveJokeBtn.style.visibility ='hidden'
   // === Saved jokes to local storage ===  
   savedJokeSetup = JSON.parse(localStorage.getItem("setupJoke")) || []
   savedJokeSetup.push(dadJokeSetup.innerText)
   localStorage.setItem("setupJoke", JSON.stringify(savedJokeSetup))
- 
-  // document.getElementById("display-joke-setup").innerHTML = ""
 
+  document.getElementById("display-saved-joke-setup").innerHTML = ""
 for (let i = 0; i < savedJokeSetup.length; i++) {
-
+ 
   var cardTag = document.createElement("div")
  cardTag.setAttribute("class","card");
  var cardContentTag = document.createElement("div")
@@ -211,7 +210,7 @@ for (let i = 0; i < savedJokeSetup.length; i++) {
   localStorage.setItem("jokePunchline", JSON.stringify(savedJokePunchline))
 
   // document.getElementById("display-joke-punchline").innerHTML = ""
-
+  document.getElementById("display-saved-joke-punchline").innerHTML = ""
   for (let i = 0; i < savedJokePunchline.length; i++) {
 
     var cardTag = document.createElement("div")
