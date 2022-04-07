@@ -143,6 +143,8 @@ var dadJokeSetup = document.getElementById('dad-joke-setup');
 var dadJokePunchline = document.getElementById('dad-joke-punchline');
 var moreJokes = document.getElementById('more-jokes');
 var saveJokeBtn = document.getElementById('save-jokes')
+var favJokeSetup = document.getElementById('display-saved-joke-setup')
+var favJokePunchline = document.getElementById('display-saved-joke-punchline')
 
 moreJokes.addEventListener('click', fetchJoke)
 saveJokeBtn.addEventListener('click', saveJokes)
@@ -167,9 +169,6 @@ function fetchJoke() {
     .then(function (response) {
       dadJokeSetup.textContent = response.body[0].setup;
       dadJokePunchline.textContent = response.body[0].punchline;
-
-
-
     })
 }
 
@@ -177,29 +176,23 @@ var savedJokeSetup
 var savedJokePunchline
 
 function saveJokes() {
-
   // === Saved jokes to local storage ===  
   savedJokeSetup = JSON.parse(localStorage.getItem("setupJoke")) || []
   savedJokeSetup.push(dadJokeSetup.innerText)
   localStorage.setItem("setupJoke", JSON.stringify(savedJokeSetup))
-  console.log(savedJokeSetup)
+  // saveJokeSetup()
+  // saveJokePunchline()
 
-  for (var i=0; i < savedJokeSetup.length; i++){
-
-    var li = document.createElement("li")
-    
-
-  }
+    favJokeSetup.textContent = savedJokeSetup
   
   savedJokePunchline = JSON.parse(localStorage.getItem("jokePunchline")) || []
   savedJokePunchline.push(dadJokePunchline.innerText)
   localStorage.setItem("jokePunchline", JSON.stringify(savedJokePunchline))
-  console.log(savedJokePunchline)
 
-  for (var i=0; i < savedJokePunchline.length; i++){
+  favJokePunchline.textContent = savedJokePunchline
 
-    var li = document.createElement("li")
-  }
+
+
 }
 
 //Nav Bar navigation js
