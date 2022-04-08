@@ -12,10 +12,10 @@
 
 <body>
   <header>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-light" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item">
-          <h1 class="title"> Laugh and Pour 🤣 🍸</h1>
+          <h1 class="title"> Laugh & Pour 🤣 🍸</h1>
           <!-- <img href="/project-1/Assets/Laughing Bartender.png" width="200" height="200"> -->
         </a>
     
@@ -28,25 +28,25 @@
     
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a href="./index.html" class="navbar-item">
+          <a href="./index.html" class="navbar-item has-text-primary-light">
             Home
           </a>
     
-          <a href="./html/about-the-team.html" class="navbar-item">
+          <a href="./html/about-the-team.html" class="navbar-item  has-text-primary-light">
             About the Team
           </a>
     
           <div class="navbar-item has-dropdown is-hoverable">
-            <a href = "#" class="navbar-link">
+            <a href = "#" class="navbar-link has-text-primary-light">
               Favorites
             </a>
     
             <div class="navbar-dropdown">
-              <a href = "#" class="navbar-item">
-                Saved Cocktail Recipes
+              <a href = "#" class="navbar-item has-text-primary-light">
+                Saved Cocktail Recipes (Coming Soon)
               </a>
-              <a href = "#" class="navbar-item">
-                Saved Jokes
+              <a href = "#" class="navbar-item has-text-primary-light">
+                Saved Jokes (Coming Soon)
               </a>
               <hr class="navbar-divider">
             </div>
@@ -79,21 +79,23 @@
     </article>
 
     <!-- About/Instruction Area -->
-    <section class="about-project">
-      <h1>Instructions</h1>
-      <p>1. Click either of the buttons below to generate a random movie or cocktail.</p>
-      <p>2. Click the cocktail/movie to learn more.</p>
+    <section class="about-project has-text-centered">
+      <h1 class="py-3 has-text-weight-semibold is-size-4">Welcome to Laugh & Pour, your go to resource for turning your kitchen into a comedy club.</h1>
+      <h1 class="py-3 is-underlined is-size-3">Instructions</h1>
+      <p class="py-2">1. Click either of the buttons below to generate a random cocktail or dad joke.</p>
+      <p>2. Click the save button to save your recipes and punchlines for future use.</p>
+      <p>3. Be the life of the party!</p>
     </section>
 
     <!-- Buttons to Generate -->
-    <div class="gen-container">
-      <section class="cocktail-generator" id="cocktail-gen">
-        <h1>Cocktail Generator</h1>
+    <div class="gen-container has-background-light">
+      <section class="cocktail-generator is-size-4" id="cocktail-gen">
+        <h1 class="pb-2">Cocktail Generator</h1>
         <button class="button is-primary" id="cocktail-btn">Get me a Cocktail</button>
       </section>
 
-      <section class="movie-generator" id="movie-gen">
-        <h1>Dad Joke Generator</h1>
+      <section class="movie-generator is-size-4 pt-3" id="movie-gen">
+        <h1 class="pb-3">Dad Joke Generator</h1>
         <button class="button is-primary" id="movie-btn">Tell Me a Joke</button>
       </section>
     </div>
@@ -104,11 +106,11 @@
 
       <div class="box cocktail-result is-centered is-flex is-flex-direction-column mx-4">
         <div class="cocktail-title">
-          <p id="cocktail-name" class="title is-3">Cocktails</p>
+          <p id="cocktail-name" class="title is-3 is-size-3 pb-3">Cocktails</p>
         </div>
         <div class="card-image">
           <figure class="image is-100x150">
-            <img id="cocktail-img" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            <img id="cocktail-img" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder Cocktail Image Box">
           </figure>
         </div>
         <div class="card-content">
