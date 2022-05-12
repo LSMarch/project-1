@@ -1,8 +1,0 @@
-      // Andrew's api key for dad jokes
-      // '67d5c72463mshc1dd978ceca0b53p17acdfjsn858a474aa071'
-      // Andrew alt api key
-      // '4c68436f62mshb3a430497e5c893p19d66cjsn54491476b0f9'
-      // Libby's api key for dad jokes
-      // 'f7e3db9b17mshb7798039f3f02b1p1671e1jsn5dd40883da0c'
-      // Sam's api key for dad jokes
-      // '60d8466088msh59caba97a5ae5bcp17a2b4jsnd488e550273a'
